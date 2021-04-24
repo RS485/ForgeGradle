@@ -103,7 +103,7 @@ public class Utils {
         .setPrettyPrinting().create();
     private static final int CACHE_TIMEOUT = 1000 * 60 * 60 * 1; //1 hour, Timeout used for version_manifest.json so we dont ping their server every request.
                                                           //manifest doesn't include sha1's so we use this for the per-version json as well.
-    public static final String FORGE_MAVEN = "https://maven.minecraftforge.net/";
+    public static final String OTHER_MAVEN = "https://maven.removeco.de/";
     public static final String MOJANG_MAVEN = "https://libraries.minecraft.net/";
     public static final String BINPATCHER =  "net.minecraftforge:binarypatcher:1.+:fatjar";
     public static final String ACCESSTRANSFORMER = "net.minecraftforge:accesstransformers:1.0.+:fatjar";
@@ -561,7 +561,7 @@ public class Utils {
         }
 
         if (ENABLE_TEST_CERTS) {
-            testServerConnection(FORGE_MAVEN);
+            testServerConnection(OTHER_MAVEN);
             testServerConnection(MOJANG_MAVEN);
         }
     }
