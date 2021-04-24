@@ -258,7 +258,7 @@ public class UserDevPlugin implements Plugin<Project> {
             }
 
             project.getRepositories().maven(e -> {
-                e.setUrl(Utils.FORGE_MAVEN);
+                e.setUrl(Utils.OTHER_MAVEN);
             });
 
             if (!internalObfConfiguration.getDependencies().isEmpty()) {

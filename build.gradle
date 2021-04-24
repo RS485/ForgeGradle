@@ -53,7 +53,7 @@ jar {
 
 repositories {
     jcenter()
-    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://maven.removeco.de/' }
 }
 
 license {
@@ -117,18 +117,7 @@ publishing {
     }
     repositories {
         maven {
-            if (System.env.MAVEN_USER) {
-                url 'https://maven.minecraftforge.net/'
-                authentication {
-                    basic(BasicAuthentication)
-                }
-                credentials {
-                    username = System.env.MAVEN_USER ?: 'not'
-                    password = System.env.MAVEN_PASSWORD ?: 'set'
-                }
-            } else {
-                url 'file://' + rootProject.file('repo').getAbsolutePath()
-            }
+            url 'file://' + rootProject.file('repo').getAbsolutePath()
         }
     }
 }

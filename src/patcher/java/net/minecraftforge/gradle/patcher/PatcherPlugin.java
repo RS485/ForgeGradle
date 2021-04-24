@@ -119,7 +119,7 @@ public class PatcherPlugin implements Plugin<Project> {
 
         //Add Known repos
         project.getRepositories().maven(e -> {
-            e.setUrl(Utils.FORGE_MAVEN);
+            e.setUrl(Utils.OTHER_MAVEN);
         });
         new BaseRepo.Builder()
             .add(MCPRepo.create(project))
