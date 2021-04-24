@@ -14,7 +14,7 @@ compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
 
-group = 'net.minecraftforge.gradle'
+group = 'network.rs485'
 version = gitVersion()
 def gitVersion() {
     def raw = grgit.describe(longDescr: true, tags: true)
