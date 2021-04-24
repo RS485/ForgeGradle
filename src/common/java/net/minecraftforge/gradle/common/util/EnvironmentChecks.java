@@ -106,7 +106,7 @@ public class EnvironmentChecks {
 
         if (ENABLE_CERTIFICATE_CHECK) {
             logger.debug(ENV_CHECK, "Checking server connections");
-            testServerConnection(Utils.FORGE_MAVEN);
+            testServerConnection(Utils.OTHER_MAVEN);
             testServerConnection(Utils.MOJANG_MAVEN);
         } else {
             logger.debug(ENV_CHECK, "Server connection check disabled by system property");

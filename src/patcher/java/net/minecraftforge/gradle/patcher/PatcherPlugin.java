@@ -146,7 +146,7 @@ public class PatcherPlugin implements Plugin<Project> {
 
         //Add Known repos
         project.getRepositories().maven(e -> {
-            e.setUrl(Utils.FORGE_MAVEN);
+            e.setUrl(Utils.OTHER_MAVEN);
             e.metadataSources(m -> {
                 m.gradleMetadata();
                 m.mavenPom();

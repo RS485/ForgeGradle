@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
     id 'org.cadixdev.licenser' version '0.6.1'
-    id 'net.minecraftforge.gradleutils' version '[2.0.10,)'
+    id 'network.rs485.forge.gradleutils' version '[2.0.10,)'
     id 'com.github.ben-manes.versions' version '0.39.0'
 }
 
@@ -51,8 +51,8 @@ tasks.named('sourcesJar', Jar).configure {
 }
 
 repositories {
-    mavenLocal()
-    maven { url = 'https://maven.minecraftforge.net/' }
+    mavenCentral()
+    maven { url = 'https://maven.removeco.de/' }
 }
 
 license {

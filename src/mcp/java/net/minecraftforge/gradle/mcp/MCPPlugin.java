@@ -61,7 +61,7 @@ public class MCPPlugin implements Plugin<Project> {
                 e.metadataSources(MetadataSources::artifact);
             });
             project.getRepositories().maven(e -> {
-                e.setUrl(Utils.FORGE_MAVEN);
+                e.setUrl(Utils.OTHER_MAVEN);
                 e.metadataSources(m -> {
                     m.gradleMetadata();
                     m.mavenPom();
