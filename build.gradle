@@ -117,15 +117,15 @@ project.extensions.eclipse.classpath.file.whenMerged { Classpath cp ->
 gradlePlugin {
     plugins {
         mcp {
-            id = 'net.minecraftforge.gradle.mcp'
+            id = "${group}.mcp"
             implementationClass = 'net.minecraftforge.gradle.mcp.MCPPlugin'
         }
         patcher {
-            id = 'net.minecraftforge.gradle.patcher'
+            id = "${group}.patcher"
             implementationClass = 'net.minecraftforge.gradle.patcher.PatcherPlugin'
         }
         userdev {
-            id = 'net.minecraftforge.gradle'
+            id = "${group}"
             implementationClass = 'net.minecraftforge.gradle.userdev.UserDevPlugin'
         }
     }
