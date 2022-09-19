@@ -170,6 +170,30 @@ public class IntellijRunGenerator extends RunConfigGenerator.XMLConfigurationBui
                     }
                     configuration.appendChild(module);
 
+                    final Element classpathModifications = javaDocument.createElement("classpathModifications");
+                    {
+                        if (updatedTokens.containsKey("classpathExclude")) {
+                            for (String classpathExclude : updatedTokens.get("classpathExclude").get().split(",")) {
+                                final Element entry = javaDocument.createElement("entry");
+                                {
+                                    entry.setAttribute("exclude", "true");
+                                    entry.setAttribute("path", replaceRootDirBy(project, classpathExclude, "$PROJECT_DIR$"));
+                                }
+                                classpathModifications.appendChild(entry);
+                            }
+                        }
+
+                        if (updatedTokens.containsKey("classpathInclude")) {
+                            for (String classpathInclude : updatedTokens.get("classpathInclude").get().split(",")) {
+                                final Element entry = javaDocument.createElement("entry");
+                                {
+                                    entry.setAttribute("path", replaceRootDirBy(project, classpathInclude, "$PROJECT_DIR$"));
+                                }
+                                classpathModifications.appendChild(entry);
+                            }
+                        }
+                    }
+
                     final Element envs = javaDocument.createElement("envs");
                     {
                         runConfig.getEnvironment().forEach((name, value) -> {
