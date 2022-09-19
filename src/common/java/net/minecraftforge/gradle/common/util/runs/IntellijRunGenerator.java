@@ -170,28 +170,34 @@ public class IntellijRunGenerator extends RunConfigGenerator.XMLConfigurationBui
                     }
                     configuration.appendChild(module);
 
+                    boolean anyClasspathModifications = false;
                     final Element classpathModifications = javaDocument.createElement("classpathModifications");
                     {
                         if (updatedTokens.containsKey("classpathExclude")) {
-                            for (String classpathExclude : updatedTokens.get("classpathExclude").get().split(",")) {
+                            for (String classpathExclude : updatedTokens.get("classpathExclude").get().split(File.pathSeparator)) {
                                 final Element entry = javaDocument.createElement("entry");
                                 {
                                     entry.setAttribute("exclude", "true");
                                     entry.setAttribute("path", replaceRootDirBy(project, classpathExclude, "$PROJECT_DIR$"));
                                 }
                                 classpathModifications.appendChild(entry);
+                                anyClasspathModifications = true;
                             }
                         }
 
                         if (updatedTokens.containsKey("classpathInclude")) {
-                            for (String classpathInclude : updatedTokens.get("classpathInclude").get().split(",")) {
+                            for (String classpathInclude : updatedTokens.get("classpathInclude").get().split(File.pathSeparator)) {
                                 final Element entry = javaDocument.createElement("entry");
                                 {
                                     entry.setAttribute("path", replaceRootDirBy(project, classpathInclude, "$PROJECT_DIR$"));
                                 }
                                 classpathModifications.appendChild(entry);
+                                anyClasspathModifications = true;
                             }
                         }
+                    }
+                    if (anyClasspathModifications) {
+                        configuration.appendChild(classpathModifications);
                     }
 
                     final Element envs = javaDocument.createElement("envs");
