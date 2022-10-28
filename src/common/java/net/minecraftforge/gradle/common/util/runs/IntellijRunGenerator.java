@@ -178,7 +178,7 @@ public class IntellijRunGenerator extends RunConfigGenerator.XMLConfigurationBui
                                 final Element entry = javaDocument.createElement("entry");
                                 {
                                     entry.setAttribute("exclude", "true");
-                                    entry.setAttribute("path", replaceRootDirBy(project, classpathExclude, "$PROJECT_DIR$"));
+                                    entry.setAttribute("path", classpathExclude);
                                 }
                                 classpathModifications.appendChild(entry);
                                 anyClasspathModifications = true;
@@ -189,7 +189,7 @@ public class IntellijRunGenerator extends RunConfigGenerator.XMLConfigurationBui
                             for (String classpathInclude : updatedTokens.get("classpathInclude").get().split(File.pathSeparator)) {
                                 final Element entry = javaDocument.createElement("entry");
                                 {
-                                    entry.setAttribute("path", replaceRootDirBy(project, classpathInclude, "$PROJECT_DIR$"));
+                                    entry.setAttribute("path", classpathInclude);
                                 }
                                 classpathModifications.appendChild(entry);
                                 anyClasspathModifications = true;
